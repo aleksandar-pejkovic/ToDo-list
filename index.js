@@ -9,11 +9,8 @@ input.addEventListener("keypress", function(event) {
     }
   });
 
-  let counterID = 0
 
 function addTask() {
-    counterID++
-    let counterText = counterID.toString()
 
     let unorderedList = document.querySelector('#taskList')
 
@@ -30,8 +27,7 @@ function addTask() {
     button.setAttribute("type", "button")
     button.setAttribute("class", "btn-close btn-close-black")
     button.setAttribute("aria-label", "Close")
-    button.setAttribute("id", counterText)
-    button.setAttribute("onclick", "removeTask(this.id)")
+    button.setAttribute("onclick", "removeTask(this)")
 
     containerDiv.appendChild(listItem)
     containerDiv.appendChild(button)
@@ -40,10 +36,7 @@ function addTask() {
 
 }
 
-function removeTask(btnId) {
-
-    let pressedBtn = document.getElementById(btnId)
-    let parentDiv = pressedBtn.parentNode
-    parentDiv.remove()
-
+function removeTask(button) {
+  let containerDiv = button.closest('.task-container')
+  containerDiv.remove()
 }
